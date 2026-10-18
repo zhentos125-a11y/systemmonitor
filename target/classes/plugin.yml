@@ -1,0 +1,26 @@
+name: SmartMonitor
+version: '2.0'
+main: system.f1xal.monitor.SmartMonitorPlugin
+api-version: '1.21'
+authors: [ f1xal ]
+description: Smart server monitoring with profiler, graphs and diagnostics
+commands:
+  monitor:
+    description: SmartMonitor main command
+    usage: /monitor <gui|profiler|graphs|actions|reload>
+permissions:
+  smartmonitor.admin:
+    description: Full access
+    default: op
+  smartmonitor.developer:
+    description: Profiler and developer tools
+    default: op
+  smartmonitor.moderator:
+    description: View metrics and actions history
+    default: op
+  smartmonitor.graphs.sign:
+    description: Place graph signs
+    default: op
+  smartmonitor.graphs.map:
+    description: Use graph maps
+    default: op

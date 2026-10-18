@@ -1,0 +1,63 @@
+flush-interval-seconds: 50
+gui-refresh-ticks: 40
+retention-days: 30
+hud:
+  color: AUTO   # AUTO | GREEN | YELLOW | RED | BLUE | PINK | PURPLE | WHITE
+
+allowed-commands:
+  - spark
+  - gc
+  - clearlag
+  - tps
+  - lag
+  - paper
+  - save-all
+
+rules:
+  low-tps:
+    enabled: true
+    metric: tps
+    operator: "<"
+    threshold: 14.5
+    sustain-seconds: 180
+    cooldown-seconds: 300
+    actions:
+      - type: COMMAND
+        value: "spark tps"
+        optional: true
+      - type: BROADCAST
+        value: "&c[SmartMonitor] Обнаружено падение TPS ниже 14.5!"
+  high-memory:
+    enabled: true
+    metric: memory_percent
+    operator: ">"
+    threshold: 80
+    sustain-seconds: 30
+    cooldown-seconds: 300
+    actions:
+      - type: COMMAND
+        value: "gc"
+        optional: true
+      - type: BROADCAST
+        value: "&e[SmartMonitor] Использование памяти > 80%!"
+  many-players:
+    enabled: true
+    metric: players
+    operator: ">"
+    threshold: 50
+    sustain-seconds: 60
+    cooldown-seconds: 600
+    actions:
+      - type: COMMAND
+        value: "clearlag"
+        optional: true
+  chunk-load:
+    enabled: true
+    metric: chunks
+    operator: ">"
+    threshold: 500
+    sustain-seconds: 60
+    cooldown-seconds: 600
+    actions:
+      - type: BROADCAST
+        value: "&e[SmartMonitor] Высокая нагрузка на чанки: >500"
